@@ -1,5 +1,5 @@
 <?php
-define('APP_NAME', 'SISTEMA DE GESTION CLINICA VETERINARIA PETS HOME');
+define('APP_NAME', 'Sistema de Gestión de Información Clínica Veterinaria PETS HOME');
 define('SERVIDOR', '127.0.0.1');
 define('USUARIO', 'root');
 define('PASSWORD', '');
