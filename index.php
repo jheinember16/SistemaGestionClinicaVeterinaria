@@ -1,68 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Sistema de Informacion Clinica Veterinaria</title>
+<?php
+include 'app/config.php';
+include 'layout/parte1.php';
+include 'app/controllers/productos/listado_de_productos.php';
+?>
 
-    <link href="public/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-
-    <!-- ICONOS DE BOOTSTRAP -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-
-    <!-- JQUERY -->
-    <script src="public/js/jquery-3.6.4.min.js"></script> 
-
-    <!-- STYLES CSS -->
-    <link rel="stylesheet" href="public/css/style.css">
-  </head>
-  <body>
-
-    
-
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container">
-        <a class="navbar-brand" href="#">
-            <img src="https://www.merida.gob.mx/salud/assets/img/elements/servicios-03.svg"
-                 alt="Logo" width="50" height="24" class="d-inline-block align-text-top">
-            Bootstrap
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle btn btn-outline-info" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Ingresar
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="login">Iniciar sesion</a></li>
-                        <li><a class="dropdown-item" href="login/registro.php">Registrar</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-outline-info">Disabled</a>
-                </li>
-            </ul>
-            <div class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle btn btn-outline-info" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Ingresar
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="login">Iniciar Sesión</a></li>
-                            <li><a class="dropdown-item" href="login/registro.php">Registrarme</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-  </nav
 
   <section>
     <div id="carouselExampleCaptions" class="carousel slide">
@@ -76,7 +17,7 @@
             <div class="carousel-item active">
                 <img src="https://cdn.pixabay.com/photo/2020/04/04/19/52/medicine-5003631_1280.jpg" height="450px" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-none d-md-block">
-                    <a href="" class="btn btn-outline-info btn-lg">Reservar cita</a>
+                    <a href="<?php echo $URL;?>/reservar.php" class="btn btn-outline-info btn-lg">Reservar cita</a>
                     <a href="" class="btn btn-info btn-lg">Ver productos</a><br><br>
                     <h5>First slide label</h5>
                     <p>Some representative placeholder content for the first slide.</p>
@@ -115,6 +56,8 @@
     </div>
   </section>
 
+  <br>
+
   <section class="info" >
     <div class="container">
         <div class="row">
@@ -134,6 +77,41 @@
             </div>
         </div>
     </div>
+</section>
+<br>
+
+<section class="our-services" style="background-color: rgba(255,208,45,0.34)">
+    <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <br><br>
+              <h1>Nuestros <b style="color: #0a58ca">Productos</b></h1>
+              <br><br>
+          </div>
+      </div>
+      <div class="row">
+        <?php
+        foreach ($productos as $producto) {
+        ?>         
+          <div class="col-md-3 mb-3 zoomP">
+              <div class="card h-100" >
+                  <img class="card-img-top mx-auto d-block mt-4" class="mt-4 ms-4 text-center" src="<?=$URL."/public/images/productos/".$producto['imagen'];?>"
+                        style="width:60px; height:90px; object-fit: cover;" class="card-img-top" alt="...">
+                        
+                  <div class="card-body mt-4 ms-4 text-center">
+                      <h5 class="card-title"><?=$producto['nombre_producto'];?></h3>
+                      <p class="card-text"><?=$producto['descripcion'];?></p>
+                      <p style=""><b>$<?=$producto['precio_venta'];?>.000</b></p>
+                  </div>
+              </div>
+              <br>
+          </div>
+        <?php
+            }
+        ?>           
+      </div>
+    </div>
+    <br><br>
 </section>
 
 <section class="our-services">
@@ -187,10 +165,11 @@
     </div>
 </section>
 
+<br>
 <section class="gallery">
     <div class="container">
         <br><br>
-        <h1>Galle<b style="color: #0a58ca">ria</b></h1>
+        <h1>Gale<b style="color: #0a58ca">ria</b></h1>
         <br><br>
         <div class="row">
             <div class="col-md-4 zoomP ">
@@ -415,55 +394,8 @@
 </div>
 </section>
 
-<footer class="container-fluid footer">
-<div class="container">
-    <br><br>
-    <div class="row">
-        <div class="col-md-4">
-            <center>
-                <img src="https://www.merida.gob.mx/salud/assets/img/elements/servicios-03.svg" width="50%" alt="">
-            </center>
-        </div>
-        <div class="col-md-4">
-            <br>
-            <h3><b>Sistema de informacion Clinica Veterinaria PETS HOME</b></h3>
-            <br>
-            <p>
-                <a href="" style="color: white">
-                    Inicio
-                </a> <br>
-                <a href="" style="color: white">
-                    Sobre nosotros
-                </a> <br>
-                <a href="" style="color: white">
-                    Galeria
-                </a> <br>
-                <a href="" style="color: white">
-                    Testimonios de los clientes
-                </a> <br>
-                <a href="" style="color: white">
-                    Tienda en linea
-                </a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <br><br><br>
-            <b> <i class="bi bi-laptop"></i> Desarrollador: </b>Jheinember Jimenez <br><br>
-            <b> <i class="bi bi-whatsapp"></i> WhatsApp: </b>3225501622<br><br>
-            <b> <i class="bi bi-envelope-open-fill"></i> Correo electronico: </b>jheinember@gmail.com <br><br>
+<?php
+include 'layout/parte2.php';
+include 'admin/layout/mensaje.php';
 
-        </div>
-    </div>
-</div>
-</footer>    
-<div class="container-fluid" style="background-color: #000000;color: white">
-    <br>
-<p style="text-align: center">© Todos los derechos reservados 2023</p>
-</div>
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"
-></script>
-  </body>
-</html>
+?>

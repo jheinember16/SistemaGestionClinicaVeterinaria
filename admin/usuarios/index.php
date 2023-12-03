@@ -30,16 +30,16 @@ include '../../app/controllers/usuarios/listado_de_usuarios.php'; ?>
                             foreach ($usuarios as $usuario){
                                 $contador = $contador + 1;
                                 $id_usuario = $usuario['id_usuario'];?>
-                                <tr>
+                                <tr style="text-align: center" class="mt-2">
                                     <td><?php echo $contador; ?></td>
                                     <td><?php echo $usuario['nombre_completo']; ?></td>
                                     <td><?php echo $usuario['email']; ?></td>
                                     <td><?php echo $usuario['cargo']; ?></td>
                                     <td style="text-align: center">
                                         <div class="btn-group" role="group" aria-label="Basic example">                                            
-                                            <a href="show.php?id_usuario=<?php echo $id_usuario; ?>" class="btn btn-info mx-1 rounded d-flex justify-content-center"><i class="bi bi-eye"></i></a>
-                                            <a href="update.php?id_usuario=<?php echo $id_usuario;?>" type="button" class="btn btn-success mx-1 rounded"><i class="bi bi-pencil-square"></i> Editar</a>
-                                            <a href="delete.php?id_usuario=<?php echo $id_usuario;?>" type="button" class="btn btn-danger mx-1 rounded"><i class="bi bi-trash3-fill"></i> Eliminar</a>
+                                            <a href="show.php?id_usuario=<?php echo $id_usuario; ?>" class="btn btn-info mx-1 rounded d-flex justify-content-center"><i class="mt-1 bi bi-eye" style="margin-right: 5px;"></i> Consultar</a>
+                                            <a href="update.php?id_usuario=<?php echo $id_usuario;?>" type="button" class="btn btn-success mx-1 rounded"><i class="bi bi-pencil-square" style="margin-right: 5px;"></i> Editar</a>
+                                            <a href="delete.php?id_usuario=<?php echo $id_usuario;?>" type="button" class="btn btn-danger mx-1 rounded"><i class="bi bi-trash3-fill" style="margin-right: 5px;"></i> Eliminar</a>
                                         </div>
 
                                     </td>
@@ -67,19 +67,29 @@ include '../../admin/layout/mensaje.php';
 ?>
 
 <script>
-  $(function () {
-    $("#example1").DataTable({
-      "responsive": true, "lengthChange": false, "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-      "responsive": true,
+    $(function () {
+        $("#example1").DataTable({
+            "pageLength": 5,
+            "language": {
+                "emptyTable": "No hay información",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Usuarios",
+                "infoEmpty": "Mostrando 0 a 0 de 0 Usuarios",
+                "infoFiltered": "(Filtrado de _MAX_ total Usuarios)",
+                "infoPostFix": "",
+                "thousands": ",",
+                "lengthMenu": "Mostrar _MENU_ Usuarios",
+                "loadingRecords": "Cargando...",
+                "processing": "Procesando...",
+                "search": "Buscador:",
+                "zeroRecords": "Sin resultados encontrados",
+                "paginate": {
+                    "first": "Primero",
+                    "last": "Ultimo",
+                    "next": "Siguiente",
+                    "previous": "Anterior"
+                }
+            },
+            "responsive": true, "lengthChange": true, "autoWidth": false,
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     });
-  });
 </script>

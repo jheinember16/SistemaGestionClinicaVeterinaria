@@ -9,10 +9,8 @@ $URL = "http://localhost/sistemagestionveterinaria";
 
 $servidor = "mysql:dbname=" . BD . ";host=" . SERVIDOR;
 
-
 date_default_timezone_set("America/Bogota");
 $fechaHora = date("Y-m-d H:i:s");
-
 
 try {
     $pdo = new PDO($servidor, USUARIO, PASSWORD);

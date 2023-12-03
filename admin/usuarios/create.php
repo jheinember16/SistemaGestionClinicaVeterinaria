@@ -16,29 +16,29 @@ include '../../admin/layout/parte1.php';?>
                         <div class="row">  
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label for="">Nombre completo</label>
-                                <input type="text" name="nombre_completo" class="form-control" placeholder="Nombre completo">
+                                <label for="">Nombre completo<b>*</b></label>
+                                <input type="text" name="nombre_completo" class="form-control" placeholder="Nombre completo" required>
                               </div>
                             </div>
 
                             <div class="col-md-6">
                               <div class="form-group">
-                                <label for="">Correo electronico</label>
-                                <input type="email" name="email" class="form-control" placeholder="Correo electronico">
+                                <label for="">Correo electronico <b>*</b></label>
+                                <input type="email" name="email" class="form-control" placeholder="Correo electronico" required>
                               </div>
                             </div>
                         </div>
                         <div class="row">
                           <div class="col-md-6">
                             <div class="form-group">
-                              <label for="">Contraseña</label>
-                              <input type="password" name="password" class="form-control" placeholder="Password">
+                              <label for="">Contraseña <b>*</b></label>
+                              <input type="password" name="password" class="form-control" placeholder="Password" required>
                             </div>
                           </div>
                           <div class="col-md-6">
                             <div class="form-group">
-                              <label for="">Verificar Contraseña</label>
-                              <input type="password" name="password_verify" class="form-control" placeholder="Password">
+                              <label for="">Verificar Contraseña <b>*</b></label>
+                              <input type="password" name="password_verify" class="form-control" placeholder="Password" required>
                             </div>
                           </div>
                         </div>

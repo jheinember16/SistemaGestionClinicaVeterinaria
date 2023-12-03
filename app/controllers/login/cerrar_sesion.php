@@ -5,5 +5,7 @@ session_start();
 
 if (isset($_SESSION['sesion_email'])) {
     session_destroy();
-    header('Location: ' . $URL . '/login');
+    header('Location: ' . $URL . '/');
 }
+
+?>

@@ -39,12 +39,12 @@ if ($contador > 0) {
 
         if ($sentencia->execute()) {
             session_start();
-            $_SESSION['mensaje'] = "Se registro de la manera correcta en la base de datos";
+            $_SESSION['mensaje'] = "Se registro exitosamente";
             $_SESSION['icono'] = 'success';
             header('Location: ' . $URL . '/admin/usuarios');
         } else {
             session_start();
-            $_SESSION['mensaje'] = "error no se pudo registrar en la base de datos";
+            $_SESSION['mensaje'] = "error no se pudo registrar el usuario";
             $_SESSION['icono'] = 'error';
             header('Location: ' . $URL . '/admin/usuarios/create.php');
         }

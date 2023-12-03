@@ -2,11 +2,21 @@
 
 session_start();
 if (isset($_SESSION['sesion_email'])) {
-    //echo "ha pasado por el login";
+//echo "ha pasado por el login";
+    $email_sesion = $_SESSION['sesion_email'];
+    $sql = "SELECT * FROM tb_usuarios WHERE email = '$email_sesion' ";
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    $usuarios = $query->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($usuarios as $usuario) {
+        $id_usuario_sesion = $usuario['id_usuario'];
+        $cargo_sesion = $usuario['cargo'];
+    }
 } else {
-    //echo "no ha pasado por el login";
+//echo "no ha pasado por el login";
     header('Location: ' . $URL . '/login');
 }
+
 
 ?>
 
@@ -29,14 +39,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="<?php echo $URL; ?>/public/templeates/dist/css/adminlte.min.css">
 
   <!-- jQuery -->
-  <script src="<?php echo $URL;?>/public/templeates/plugins/jquery/jquery.min.js"></script>
+  <script src="<?php echo $URL; ?>/public/templeates/plugins/jquery/jquery.min.js"></script>
 
    <!-- Libreria de mensajes Sweetalert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
   <!-- DataTables -->
-  <link rel="stylesheet" href="<?php echo $URL;?>/public/templeates/datatables-bs4/css/dataTables.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?php echo $URL;?>/public/templeates/datatables-responsive/css/responsive.bootstrap4.min.css">
-  <link rel="stylesheet" href="<?php echo $URL;?>/public/templeates/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?php echo $URL; ?>/public/templeates/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?php echo $URL; ?>/public/templeates/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?php echo $URL; ?>/public/templeates/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
   <style>
     /* Asegúrate de que el contenido ocupe el 100% del ancho */
     .content {
@@ -165,14 +179,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="<?php echo $URL; ?>/admin/usuarios" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Lista de usuarios</p>
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-person-lines-fill nav-icon mx-2"></i>
+                    <p>Lista de usuarios</p>
+                  </div>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="<?php echo $URL; ?>/admin/usuarios/create.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Nuevo usuario</p>
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-person-plus nav-icon mx-2"></i>
+                    <p>Nuevo usuario</p>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Productos
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo $URL; ?>/admin/productos" class="nav-link">
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-cart4 nav-icon mx-2"></i>
+                    <p>Lista de productos</p>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo $URL; ?>/admin/productos/create.php" class="nav-link">
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-bag-plus nav-icon mx-2"></i>
+                    <p>Nuevo producto</p>
+                  </div>
                 </a>
               </li>
             </ul>
