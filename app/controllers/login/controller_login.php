@@ -14,14 +14,21 @@ $contador = 0;
 foreach ($usuarios as $usuario) {
     $contador = $contador + 1;
     $password_tabla = $usuario['password'];
+    $cargo_tabla = $usuario['cargo'];
+
 }
 
 $hash = $password_tabla;
 if (($contador > 0) && (password_verify($password, $hash))) {
-    echo "bienvenido al sistema";
+    echo "Bienvenido al sistema";
     session_start();
     $_SESSION['sesion_email'] = $email;
-    header('Location: ' . $URL . '/');
+    
+    if($cargo_tabla == "ADMINISTRADOR"){
+        header('Location: ' . $URL . '/admin');
+    } else{
+        header('Location: ' . $URL . '/');
+    }
 } else {
     echo "error en los datos";
     header('Location: ' . $URL . '/');

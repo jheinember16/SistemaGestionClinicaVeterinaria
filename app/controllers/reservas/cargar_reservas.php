@@ -7,9 +7,9 @@ $query = $pdo->prepare($sql);
 $query->execute();
 
 $resultado = $query->fetchAll(PDO::FETCH_ASSOC);
-print_r($resultado)
+//print_r($resultado)
 
-//echo json_encode($resultado);
+echo json_encode($resultado);
 
 
 ?>

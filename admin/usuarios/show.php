@@ -43,6 +43,14 @@ include '../../app/controllers/usuarios/datos_del_usuario.php';
                                 </div>
                             </div>
 
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <a href="index.php" class="btn btn-secondary">Regresar</a>
+                                </div>
+                            </div>
+
                     </div>
                 </div>
             </div>

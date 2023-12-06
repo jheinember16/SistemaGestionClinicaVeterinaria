@@ -54,6 +54,8 @@ include '../../admin/layout/parte1.php';?>
                           </div>
                         </div>
 
+                        <hr>
+
                         <div class="row">
                           <div class="col-md-12">
                             <a href="" class="btn btn-secondary">Cancelar</a>

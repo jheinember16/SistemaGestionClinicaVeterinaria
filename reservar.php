@@ -38,9 +38,20 @@ include 'layout/parte1.php';
                 }else if( (numeroDia == "6") ){
                     alert("No hay atencion los dias domingos");
                 }else { 
-                    $("#modal_reservas").modal("show");
-                    $("#dia_de_la_semana").html(dias[numeroDia ] + " " + a);
-                }
+
+                  $("#modal_reservas").modal("show");
+                  $("#dia_de_la_semana").html(dias[numeroDia ] + " " + a);
+
+                  var fecha = info.dateStr;
+                  var res = "";
+                  var url = 'app/controllers/reservas/verificar_horario.php';
+
+                  $.get(url,{fecha:fecha},function (datos){
+                    res = datos;
+                    $('#respuesta_horario').html(res);
+                  });
+                    
+                  }
 
               }
 
@@ -73,6 +84,8 @@ include 'layout/parte1.php';
 <?php
 
 include 'layout/parte2.php';
+include 'admin/layout/mensaje.php';
+
 ?>
 
 <div class="modal fade" id="modal_sesion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -95,15 +108,15 @@ include 'layout/parte2.php';
   </div>
 </div>
 
-<div class="modal fade" id="modal_reservas" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_reservas" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Cita para el dia <b><span id="dia_de_la_semana"></span></b></h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
+
         <div class="modal-body">
+          <center><h2>Reserva tu cita</h2></center>
+          <hr>
           <div class="row">
+            <div id="respuesta_horario"> </div>
               <div class="col-md-6">
                     <center><b>Turno mañana</b></center>
                     <br>
@@ -127,7 +140,9 @@ include 'layout/parte2.php';
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <a href="" class="btn btn-primary">
+            Escoger otra fecha
+          </a>
         </div>
       </div>
   </div>
@@ -135,7 +150,7 @@ include 'layout/parte2.php';
 
 
 
-<div class="modal fade" id="modal_formulario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal_formulario" data-backdrop="static" data-keyword="false" aria-labelledby="staticBackdropLabel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -202,7 +217,7 @@ include 'layout/parte2.php';
         $("#modal_formulario").modal("show");
         $("#fecha_reserva").val(a);
         $("#fecha_reserva2").val(a);
-        var h1 = "08:00-09:00";
+        var h1 = "08:00 - 09:00";
         $("#hora_reserva").val(h1);
         $("#hora_reserva2").val(h1);
     });

@@ -100,7 +100,6 @@ include '../../app/controllers/productos/datos_del_producto.php';
                         <div class="row">
                             <div class="col-md-12">
                                 <a href="index.php" class="btn btn-secondary">Cancelar</a>
-
                             </div>
                         </div>
 

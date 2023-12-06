@@ -51,9 +51,9 @@ include '../../app/controllers/productos/listado_de_productos.php';
                                     <td><center><?=$producto['fecha_de_ingreso'];?></center></td>
                                     <td style="text-align: center">
                                         <div class="btn-group" role="group" aria-label="Basic example">
-                                            <a href="show.php?id_producto=<?php echo $id_producto; ?>" class="btn btn-info mx-1 my-3 rounded"><i class="bi bi-eye-fill"></i> Ver</a>
-                                            <a href="update.php?id_producto=<?php echo $id_producto; ?>" type="button" class="btn btn-success mx-1 my-3 rounded"><i class="bi bi-pencil-square"></i> Editar</a>
-                                            <a href="delete.php?id_producto=<?php echo $id_producto; ?>" type="button" class="btn btn-danger mx-1 my-3 rounded"><i class="bi bi-trash3-fill"></i> Borrar</a>
+                                            <a href="show.php?id_producto=<?php echo $id_producto; ?>" class="btn btn-info mx-1 my-3 rounded"><i class="bi bi-eye-fill"></i> </a>
+                                            <a href="update.php?id_producto=<?php echo $id_producto; ?>" type="button" class="btn btn-success mx-1 my-3 rounded"><i class="bi bi-pencil-square"></i> </a>
+                                            <a href="delete.php?id_producto=<?php echo $id_producto; ?>" type="button" class="btn btn-danger mx-1 my-3 rounded"><i class="bi bi-trash3-fill"></i> </a>
                                         </div>
                                     </td>
                                 </tr>

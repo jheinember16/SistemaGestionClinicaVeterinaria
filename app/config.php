@@ -14,7 +14,6 @@ $fechaHora = date("Y-m-d H:i:s");
 
 try {
     $pdo = new PDO($servidor, USUARIO, PASSWORD);
-    echo "<script>console.log('Connected to the database successfully!');</script>";
 } catch (PDOException $e) {
     die("Connection failed: " . $e->getMessage());
 }

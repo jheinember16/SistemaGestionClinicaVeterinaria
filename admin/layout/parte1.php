@@ -12,6 +12,11 @@ if (isset($_SESSION['sesion_email'])) {
         $id_usuario_sesion = $usuario['id_usuario'];
         $cargo_sesion = $usuario['cargo'];
     }
+
+    if ($cargo_sesion == "CLIENTE") {
+      header('Location: ' . $URL . '/');
+    }
+
 } else {
 //echo "no ha pasado por el login";
     header('Location: ' . $URL . '/login');
@@ -43,7 +48,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
    <!-- Libreria de mensajes Sweetalert2 -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  
+   
   <!-- DataTables -->
   <link rel="stylesheet" href="<?php echo $URL; ?>/public/templeates/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="<?php echo $URL; ?>/public/templeates/datatables-responsive/css/responsive.bootstrap4.min.css">
@@ -220,6 +225,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </div>
                 </a>
               </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-list"></i>
+              <p>
+                Reservas
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?php echo $URL;?>/admin/reservas" class="nav-link">
+                  <div class="d-flex align-items-center">
+                    <i class="bi bi-person-lines-fill nav-icon mx-2"></i>
+                    <p>Lista de reservas</p>
+                  </div>
+                </a>
+              </li>
+              
             </ul>
           </li>
           <li class="nav-item">

@@ -1,17 +1,18 @@
  <?php
 include '../../app/config.php';
 include '../../admin/layout/parte1.php';
-include '../../app/controllers/usuarios/listado_de_usuarios.php'; ?>
+include '../../app/controllers/reservas/listado_reservas.php';
+?>
 
     <br>
     <div class="container-fluid">
-        <h1>Listado de usuarios</h1>
+        <h1>Listado de reservas</h1>
 
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-outline card-primary">
                     <div class="card-header">
-                        <h3 class="card-title"><b>Usuarios registrados</b></h3>
+                        <h3 class="card-title"><b>Reservas registradas</b></h3>
                     </div>
                     <div class="card-body">
                         <table id="example1" class="table table-striped table-bordered table-hover">
@@ -20,37 +21,33 @@ include '../../app/controllers/usuarios/listado_de_usuarios.php'; ?>
                                     <th style="text-align: center">Nro</th>
                                     <th style="text-align: center">Nombre completo</th>
                                     <th style="text-align: center">Email</th>
-                                    <th style="text-align: center">Cargo</th>
-                                    <th style="text-align: center">Acciones</th>
+                                    <th style="text-align: center">Nombre de la mascota</th>
+                                    <th style="text-align: center">Tipo de servicio</th>
+                                    <th style="text-align: center">Fecha cita</th>
+                                    <th style="text-align: center">Hora cita</th>
                                 </tr>
                             </thead>
                             <tbody>
                             <?php
                             $contador = 0;
-                            foreach ($usuarios as $usuario){
+                            foreach ($reservas as $reserva) {
                                 $contador = $contador + 1;
-                                $id_usuario = $usuario['id_usuario'];?>
+                                $id_reserva = $reserva['id_reserva'];
+                                ?>
                                 <tr style="text-align: center" class="mt-2">
-                                    <td><?php echo $contador; ?></td>
-                                    <td><?php echo $usuario['nombre_completo']; ?></td>
-                                    <td><?php echo $usuario['email']; ?></td>
-                                    <td><?php echo $usuario['cargo']; ?></td>
-                                    <td style="text-align: center">
-                                        <div class="btn-group" role="group" aria-label="Basic example">                                            
-                                            <a href="show.php?id_usuario=<?php echo $id_usuario; ?>" class="btn btn-info mx-1 my-3 rounded"><i class="bi bi-eye" ></i></a>
-                                            <a href="update.php?id_usuario=<?php echo $id_usuario;?>" type="button" class="btn btn-success mx-1 my-3 rounded"><i class="bi bi-pencil-square"></i></a>
-                                            <a href="delete.php?id_usuario=<?php echo $id_usuario;?>" type="button" class="btn btn-danger mx-1 my-3 rounded"><i class="bi bi-trash3-fill"></i></a>
-
-                                            
-                                        </div>
-
-                                    </td>
+                                    <td><?php echo $contador;?></td>
+                                    <td><?php echo $reserva['nombre_completo']; ?></td>
+                                    <td><?php echo $reserva['email']; ?></td>
+                                    <td><?php echo $reserva['nombre_mascota']; ?></td>
+                                    <td><?php echo $reserva['tipo_servicio']; ?></td>
+                                    <td><?php echo $reserva['fecha_cita']; ?></td>
+                                    <td><?php echo $reserva['hora_cita']; ?></td>
                                 </tr>
-                            <?php
-                            }
-                            ?>
+                                <?php
+                              }
+                              ?>
                             </tbody>
-                        </table>                       
+                        </table>
 
                         <br><br>
 
@@ -74,12 +71,12 @@ include '../../admin/layout/mensaje.php';
             "pageLength": 5,
             "language": {
                 "emptyTable": "No hay información",
-                "info": "Mostrando _START_ a _END_ de _TOTAL_ Usuarios",
-                "infoEmpty": "Mostrando 0 a 0 de 0 Usuarios",
-                "infoFiltered": "(Filtrado de _MAX_ total Usuarios)",
+                "info": "Mostrando _START_ a _END_ de _TOTAL_ Reservas",
+                "infoEmpty": "Mostrando 0 a 0 de 0 Reservas",
+                "infoFiltered": "(Filtrado de _MAX_ total Reservas)",
                 "infoPostFix": "",
                 "thousands": ",",
-                "lengthMenu": "Mostrar _MENU_ Usuarios",
+                "lengthMenu": "Mostrar _MENU_ Reservas",
                 "loadingRecords": "Cargando...",
                 "processing": "Procesando...",
                 "search": "Buscador:",
